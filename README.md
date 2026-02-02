@@ -37,15 +37,25 @@ Monitoring student attention in online or hybrid classrooms is challenging. Teac
 
 ---
 
-## Installation / How to Run
+Usage
+Student opens portal → allows webcam access.
+Click Start Analysis → frames are sent to backend every 2 seconds.
+Teacher dashboard receives live session data → visualizes confusion scores and engagement.
+Click Stop to end analysis and release the webcam.
 
-### Backend
-```bash
-cd backend
-python -m venv .venv
-.\.venv\Scripts\activate       # Windows
-pip install -r requirements.txt
-uvicorn main:app --reload
+---
 
+Limitations
+Currently only detects confusion; other emotions are placeholders.
+Works best with single face; multiple faces may affect accuracy.
+Real-time performance depends on camera quality and network speed.
+Session data is stored in-memory → not persistent across server restarts.
+WebSocket live updates need proper deployment to work outside localhost.
 
+---
 
+Future Work
+Add full emotion recognition (happiness, boredom, frustration).
+Persistent database storage for session history.
+Mobile browser support.
+Multi-student monitoring in classrooms.
