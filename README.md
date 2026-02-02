@@ -46,35 +46,6 @@ python -m venv .venv
 .\.venv\Scripts\activate       # Windows
 pip install -r requirements.txt
 uvicorn main:app --reload
-Open http://127.0.0.1:8000/docs to verify API.
 
-----
-###Frontend
-'''Bash
-cd frontend
-npm install
-npm run dev
-Open the URL shown in terminal (usually http://localhost:5173) to access the student portal.
 
-----
-Usage
-Student opens portal → allows webcam access.
-Click Start Analysis → frames are sent to backend every 2 seconds.
-Teacher dashboard receives live session data → visualizes confusion scores and engagement.
-Click Stop to end analysis and release the webcam.
-
-----
-Limitations
-Currently only detects confusion; other emotions are placeholders.
-Works best with single face; multiple faces may affect accuracy.
-Real-time performance depends on camera quality and network speed.
-Session data is stored in-memory → not persistent across server restarts.
-WebSocket live updates need proper deployment to work outside localhost.
-
-----
-Future Work
-Add full emotion recognition (happiness, boredom, frustration).
-Persistent database storage for session history.
-Mobile browser support.
-Multi-student monitoring in classrooms.
 
