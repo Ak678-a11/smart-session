@@ -1,0 +1,51 @@
+# --------------------
+# Python / Backend
+# --------------------
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+.idea/
+
+# --------------------
+# Node / Frontend
+# --------------------
+node_modules/
+dist/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+/build/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# --------------------
+# Misc / Others
+# --------------------
+*.pyc
+*.pyo
+*.pyd
+*.swp
+*.swo
