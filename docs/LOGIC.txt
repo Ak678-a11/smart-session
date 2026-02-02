@@ -1,0 +1,40 @@
+1. Overview:
+The system determines student engagement and integrity using rule-based logic applied over short time windows, rather than single-frame predictions.
+
+2. Proctoring Rules (Highest Priority):
+ Proctor alerts override all other states.
+a. No Face Detected:
+      Triggered if no face is detected for more than 2 seconds.
+b. Multiple Faces Detected:
+      Triggered immediately if more than one face appears.
+c. Gaze Away:
+      Triggered if the student looks away from the screen for more than 4 continuous seconds.
+
+3. Confusion Detection Logic:
+Confusion is inferred when multiple weak signals persist together over time.
+Signals used:
+a. Eyebrow furrow (reduced distance between eyebrows)
+b. Absence of smile
+c. Slight head tilt
+d Reduced blinking
+
+Confusion state is triggered when:
+ At least two confusion signals are present
+and they persist for more than 5 seconds
+
+4. Focused / Neutral State:
+A student is considered focused when:
+a. Face is clearly detected
+b. Gaze is mostly forward
+c. No proctoring rules are violated
+d. Confusion conditions are not met
+
+5. Temporal Smoothing:
+a. Signals are averaged over rolling time windows.
+b. Short spikes are ignored.
+c. State changes require sustained evidence.
+
+6. Priority Order:
+a. Proctor Alert
+b. Confused
+c. Focused

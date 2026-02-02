@@ -1,0 +1,40 @@
+1. High-Level Architecture
+The system follows a client–server architecture with real-time communication.
+Student Client (Browser + Webcam)
+Backend Server (Vision + Logic)
+Teacher Dashboard (Browser)
+
+2. Data Flow:
+Student Webcam
+   ↓ (video frames)
+Backend Vision Engine
+   ↓ (facial landmarks & metrics)
+State Classification Logic
+   ↓ (student state)
+WebSocket Server
+   ↓ (JSON updates)
+Teacher Dashboard
+
+3. Responsibilities:
+Student Client
+ Captures webcam video
+ Sends frames or metrics to backend
+ Displays local status feedback
+Backend Server
+Runs face detection and landmark extraction
+Computes engagement and proctoring signals
+Determines student state
+Manages WebSocket connections
+Teacher Dashboard
+Receives live student states
+ Displays alerts and engagement timeline
+
+4. Update Frequency:
+Vision analysis runs continuously.
+Student state is updated every 500–1000 ms.
+WebSocket pushes updates instantly on change.
+
+5. Failure Handling:
+If no face is detected, trigger proctor alert.
+If the webcam disconnects, notify the teacher.
+Temporary noise is smoothed using time windows.

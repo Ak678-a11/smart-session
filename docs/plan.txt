@@ -1,0 +1,33 @@
+1. Project Goal:
+The goal of this project is to build a real-time system that analyzes a student’s webcam feed to determine engagement and exam integrity, and sends live status updates to a teacher dashboard.
+
+2. System Overview:
+a. Student joins a session using a browser and webcam.
+b. Video frames are processed on the backend using computer vision.
+c. Facial landmarks are extracted to compute engagement signals.
+d. Rule-based logic classifies the student state.
+e. Status updates are sent to the teacher in real time using WebSockets.
+
+3. Student States:
+The system classifies students into the following states:
+a. Focused: Face present, gaze forward, neutral expression.
+b. Confused: Brow furrow, reduced smile, head tilt over a short duration.
+c. Proctor Alert: No face detected, multiple faces, or gaze away for more than a few seconds.
+
+4. Key Signals Used:
+a. Face presence and count
+b. Eye gaze direction
+c. Eyebrow distance (brow furrow)
+d. Mouth shape (smile detection)
+e. Head orientation
+
+5. Real-Time Communication:
+a. The student client sends periodic analysis results.
+b. The backend broadcasts student state changes to the teacher dashboard using WebSockets.
+c. No raw video is sent to the teacher.
+
+6. Design Principles:
+a. Rule-based logic instead of black-box emotion APIs
+b. Low latency updates
+c. Clear separation between vision, logic, and UI
+d. Simple and readable code
